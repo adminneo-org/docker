@@ -11,7 +11,7 @@ docker buildx build --platform linux/amd64,linux/arm64 -t peterknut/adminneo:dev
 docker stop adminneo || true
 docker rm adminneo || true
 
-docker run -d --name adminneo -p 8080:80 \
+docker run -d --name adminneo -p 8080:8080 \
   -e NEO_COLOR_VARIANT=green \
   -e NEO_PREFER_SELECTION=true \
   -e NEO_JSON_VALUES_DETECTION=true \

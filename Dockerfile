@@ -39,7 +39,6 @@ RUN apk add --update --no-cache \
 
 COPY src/php.ini ${PHP_INI_DIR}/conf.d/custom.ini
 RUN sed -i '/keepalive_timeout/a\    client_max_body_size 1G;' /etc/nginx/nginx.conf
-RUN sed -i -e 's/8080/80/g' /etc/nginx/conf.d/default.conf
 
 # Switch back to non-root user
 USER nobody
@@ -61,5 +60,3 @@ RUN git clone --single-branch --depth 1 https://github.com/adminneo-org/adminneo
 # Copying index.php
 COPY src/index.php /var/www/html/
 #COPY src/info.php /var/www/html/
-
-EXPOSE 80

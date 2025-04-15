@@ -17,9 +17,9 @@ Usage
 -----
 
 ```shell
-docker run -d --name adminneo -p 8080:80 adminneo:devel
+docker run -d --name adminneo -p 8080:8080 adminneo:devel
 
-docker run -d --name adminneo -p 8080:80 \
+docker run -d --name adminneo -p 8080:8080 \
   -e NEO_COLOR_VARIANT=green \
   -e NEO_PREFER_SELECTION=true \
   -e NEO_JSON_VALUES_DETECTION=true \
