@@ -16,6 +16,8 @@ function create_adminneo(): Pluginer
     $variables = [
         "theme" => "NEO_THEME",
         "colorVariant" => "NEO_COLOR_VARIANT",
+        "cssUrls" => "NEO_CSS_URLS",
+        "jsUrls" => "NEO_JS_URLS",
         "navigationMode" => "NEO_NAVIGATION_MODE",
         "preferSelection" => "NEO_PREFER_SELECTION",
         "jsonValuesDetection" => "NEO_JSON_VALUES_DETECTION",
@@ -23,9 +25,9 @@ function create_adminneo(): Pluginer
         "enumAsSelectThreshold" => "NEO_ENUM_AS_SELECT_THRESHOLD",
         "recordsPerPage" => "NEO_RECORDS_PER_PAGE",
         "versionVerification" => "NEO_VERSION_VERIFICATION",
-//		"hiddenDatabases" => "NEO_HIDDEN_DATABASES",
-//		"hiddenSchemas" => "NEO_HIDDEN_SCHEMAS",
-//		"visibleCollations" => "NEO_VISIBLE_COLLATIONS",
+		"hiddenDatabases" => "NEO_HIDDEN_DATABASES",
+		"hiddenSchemas" => "NEO_HIDDEN_SCHEMAS",
+		"visibleCollations" => "NEO_VISIBLE_COLLATIONS",
         "defaultDriver" => "NEO_DEFAULT_DRIVER",
         "defaultPasswordHash" => "NEO_DEFAULT_PASSWORD_HASH",
         "sslKey" => "NEO_SSL_KEY",
@@ -34,7 +36,6 @@ function create_adminneo(): Pluginer
         "sslTrustServerCertificate" => "NEO_SSL_TRUST_SERVER_CERTIFICATE",
         "sslMode" => "NEO_SSL_MODE",
         "sslEncrypt" => "NEO_SSL_ENCRYPT",
-//		"servers" => "NEO_SERVERS",
     ];
 
     $config = [];
