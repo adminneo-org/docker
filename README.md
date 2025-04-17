@@ -6,6 +6,8 @@ AdminNeo Docker image
 Supported database drivers:
 - MySQL, MariaDB, PostgreSQL, SQLite, MS SQL, MongoDB, SimpleDB, Elasticsearch (beta), ClickHouse (alpha)
 
+AdminNeo is based on the [Adminer](https://www.adminer.org/) project by Jakub Vrána.
+
 <img src="https://raw.githubusercontent.com/adminneo-org/adminneo/refs/heads/main/docs/images/screenshot-select.webp" width="800" alt="Screenshot - Select data"/>
 
 Tags
@@ -53,6 +55,25 @@ For detailed information see [Configuration documentation](https://github.com/ad
 | NEO_SSL_TRUST_SERVER_CERTIFICATE | `null`    | MySQL, MS SQL: Whether to trust server certificate. Values: `true`, `false`, `null`.                                                     |
 | NEO_SSL_MODE                     | `null`    | PostgreSQL: Value for [sslmode connection parameter](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-SSLMODE).  |
 | NEO_SSL_ENCRYPT                  | `null`    | MS SQL: Whether the communication is encrypted. Values: `true`, `false`, `null`.                                                         |
+
+Custom CSS and Javascript
+-------------------------
+
+It is possible to modify the appearance and functionality by creating a custom CSS or Javascript file. AdminNeo will
+automatically include files `adminneo.css`, `adminneo-light.css`, `adminneo-dark.css` and `adminneo.js` that are
+placed in the AdminNeo's current working directory (typically next to the index.php).
+
+- adminneo.css - Should be compatible with automatic switching to dark mode.
+- adminneo-light.css - Will force AdminNeo to use only the light mode.
+- adminneo-dark.css - Will force the dark mode.
+
+This can be achieved by bind-mounting the files:
+```shell
+docker run -d --name adminneo -p 8080:8080 \
+  -v "/some_path/adminneo.css:/var/www/html/adminneo.css" \
+  -v "/some_path/adminneo.js:/var/www/html/adminneo.js" \
+  adminneo:devel
+```
 
 More information
 ----------------
