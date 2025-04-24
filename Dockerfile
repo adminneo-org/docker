@@ -51,12 +51,12 @@ ARG CACHE_BUST=1
 RUN git clone --single-branch --depth 1 https://github.com/adminneo-org/adminneo.git \
     && composer install -d adminneo --optimize-autoloader --no-interaction --no-progress \
     && php adminneo/bin/compile.php mysql,pgsql,mssql,mongo,elastic,clickhouse,simpledb default+ \
-    && mkdir plugins \
-    && cp adminneo/export/adminneo.php . \
-    && cp adminneo/plugins/*.php plugins \
+    && mkdir adminneo-plugins \
+    && cp adminneo/export/adminneo.php ./index.php \
+    && cp adminneo/plugins/*.php adminneo-plugins \
     && rm -rf adminneo \
     && rm test.html
 
-# Copying index.php
-COPY src/index.php /var/www/html/
+# Copy configuration files
+COPY src/adminneo-*.php /var/www/html/
 #COPY src/info.php /var/www/html/
