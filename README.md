@@ -64,10 +64,10 @@ For detailed information see [Configuration documentation](https://github.com/ad
 | NEO_SSL_MODE                     | `null`    | PostgreSQL: Value for [sslmode connection parameter](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-SSLMODE).                             |
 | NEO_SSL_ENCRYPT                  | `null`    | MS SQL: Whether the communication is encrypted. Values: `true`, `false`, `null`.                                                                                    |
 
-Custom CSS and Javascript
+Custom CSS and JavaScript
 -------------------------
 
-It is possible to modify the appearance and functionality by creating a custom CSS or Javascript file. AdminNeo will
+It is possible to modify the appearance and functionality by creating a custom CSS or JavaScript file. AdminNeo will
 automatically include files `adminneo.css`, `adminneo-light.css`, `adminneo-dark.css` and `adminneo.js` that are
 placed in the AdminNeo's current working directory (typically next to the index.php).
 
