@@ -50,10 +50,10 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 ARG CACHE_BUST=1
 RUN git clone --single-branch --depth 1 https://github.com/adminneo-org/adminneo.git \
     && composer install -d adminneo --optimize-autoloader --no-interaction --no-progress \
-    && php adminneo/bin/compile.php mysql,pgsql,mssql,mongo,elastic,clickhouse,simpledb default+ \
+    && php adminneo/bin/compile.php mysql,pgsql,mssql,mongo,elastic,clickhouse,simpledb default \
     && mkdir adminneo-plugins \
-    && cp adminneo/export/adminneo.php ./index.php \
-    && cp adminneo/plugins/*.php adminneo-plugins \
+    && cp adminneo/compiled/adminneo.php ./index.php \
+    && cp adminneo/compiled/adminneo-plugins/*.php adminneo-plugins \
     && rm -rf adminneo \
     && rm test.html
 
