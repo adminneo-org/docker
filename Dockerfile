@@ -43,17 +43,10 @@ RUN sed -i '/keepalive_timeout/a\    client_max_body_size 1G;' /etc/nginx/nginx.
 # Switch back to non-root user
 USER nobody
 
-# Install composer from the official image
-COPY --from=composer /usr/bin/composer /usr/bin/composer
-
 # Install AdminNeo dev
 ARG CACHE_BUST=1
 RUN git clone --single-branch --depth 1 https://github.com/adminneo-org/adminneo.git \
-    && composer install -d adminneo --optimize-autoloader --no-interaction --no-progress \
-    && php adminneo/bin/compile.php mysql,pgsql,mssql,mongo,elastic,clickhouse,simpledb default \
-    && mkdir adminneo-plugins \
-    && cp adminneo/compiled/adminneo.php ./index.php \
-    && cp adminneo/compiled/adminneo-plugins/*.php adminneo-plugins \
+    && php adminneo/bin/compile.php mysql,pgsql,mssql,mongo,elastic,clickhouse,simpledb default -o index.php \
     && rm -rf adminneo \
     && rm test.html
 
