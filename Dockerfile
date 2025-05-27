@@ -13,6 +13,7 @@ RUN apk add --update --no-cache \
         git \
         php84-pgsql \
         php84-simplexml \
+        php84-sqlite3 \
         php84-bz2 \
         php84-zip \
         php84-pecl-mongodb \
@@ -46,7 +47,7 @@ USER nobody
 # Install AdminNeo dev
 ARG CACHE_BUST=1
 RUN git clone --single-branch --depth 1 https://github.com/adminneo-org/adminneo.git \
-    && php adminneo/bin/compile.php mysql,pgsql,mssql,mongo,elastic,clickhouse,simpledb default -o index.php \
+    && php adminneo/bin/compile.php mysql,pgsql,mssql,sqlite,mongo,elastic,clickhouse,simpledb default -o index.php \
     && rm -rf adminneo \
     && rm test.html
 
