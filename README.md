@@ -1,14 +1,26 @@
 AdminNeo Docker image
 =====================
 
-**AdminNeo** is a full-featured database management tool written in PHP.
-
-Supported database drivers:
-- MySQL, MariaDB, PostgreSQL, SQLite, MS SQL, MongoDB, SimpleDB, Elasticsearch (beta), ClickHouse (alpha)
+**AdminNeo** is a full-featured database management tool written in PHP. Free for commercial and non-commercial use.
 
 AdminNeo is based on the [Adminer](https://www.adminer.org/) project by Jakub Vrána.
 
 <img src="https://raw.githubusercontent.com/adminneo-org/adminneo/refs/heads/main/docs/images/screenshot-select.webp" width="800" alt="Screenshot - Select data"/>
+
+### Key features
+- Clean modern user interface
+- Managing the structure of databases and tables
+- Data manipulation and searching
+- Exporting and importing databases and data
+- Executing batch SQL commands
+- Extendable by plugins
+- And much more…
+
+### Supported databases
+
+- MySQL, MariaDB, PostgreSQL, MS SQL, SQLite
+- MongoDB, SimpleDB
+- Elasticsearch (beta), ClickHouse (alpha)
 
 Tags
 ----
@@ -37,7 +49,7 @@ docker run -d --name adminneo -p 8080:8080 \
 Configuration
 -------------
 
-For detailed information see [Configuration documentation](https://github.com/adminneo-org/adminneo/blob/main/docs/configuration.md).
+For detailed information see [Configuration documentation](https://www.adminneo.org/configuration).
 
 | Environment variable             | Default   | Description                                                                                                                                                         |
 |----------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -68,8 +80,8 @@ Custom CSS and JavaScript
 -------------------------
 
 It is possible to modify the appearance and functionality by creating a custom CSS or JavaScript file. AdminNeo will
-automatically include files `adminneo.css`, `adminneo-light.css`, `adminneo-dark.css` and `adminneo.js` that are
-placed in the AdminNeo's current working directory (typically next to the index.php).
+automatically include files **adminneo.css**, **adminneo-light.css**, **adminneo-dark.css** and **adminneo.js** that are
+placed in **/var/www/html** directory (next to the index.php).
 
 - adminneo.css - Should be compatible with automatic switching to dark mode.
 - adminneo-light.css - Will force AdminNeo to use only the light mode.
@@ -86,4 +98,4 @@ docker run -d --name adminneo -p 8080:8080 \
 More information
 ----------------
 
-Source code and license information can be found on: https://github.com/adminneo-org/adminneo
+Source code and license information can be found on [GitGub pages](https://github.com/adminneo-org/adminneo).
