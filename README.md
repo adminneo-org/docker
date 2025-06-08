@@ -31,7 +31,7 @@ Usage
 -----
 
 ```shell
-docker run -d --name adminneo -p 8080:8080 peterknut/adminneo:devel
+docker run -d --name adminneo -p 8080:8080 adminneoorg/adminneo:devel
 
 docker run -d --name adminneo -p 8080:8080 \
   -e NEO_COLOR_VARIANT=green \
@@ -43,7 +43,7 @@ docker run -d --name adminneo -p 8080:8080 \
   -e NEO_HIDDEN_SCHEMAS=__system \
   -e NEO_DEFAULT_PASSWORD_HASH= \
   -e NEO_SSL_TRUST_SERVER_CERTIFICATE=true \
-  peterknut/adminneo:devel
+  adminneoorg/adminneo:devel
 ```
 
 Configuration
@@ -94,7 +94,7 @@ This can be achieved by bind-mounting the files:
 docker run -d --name adminneo -p 8080:8080 \
   -v "/some_path/adminneo.css:/var/www/html/adminneo.css" \
   -v "/some_path/adminneo.js:/var/www/html/adminneo.js" \
-  peterknut/adminneo:devel
+  adminneoorg/adminneo:devel
 ```
 
 More information
