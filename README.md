@@ -102,4 +102,6 @@ docker run -d --name adminneo -p 8080:8080 \
 More information
 ----------------
 
-Source code and license information can be found on [GitGub pages](https://github.com/adminneo-org/adminneo).
+Source code and license information can be found on [GitHub](https://github.com/adminneo-org/adminneo).
+
+The Docker image is available on [Docker Hub](https://hub.docker.com/r/adminneoorg/adminneo).
