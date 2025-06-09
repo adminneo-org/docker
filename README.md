@@ -25,7 +25,9 @@ AdminNeo is based on the [Adminer](https://www.adminer.org/) project by Jakub Vr
 Tags
 ----
 
-- `devel` - Latest but unstable image generated from git.
+- `devel` - Current development version.
+- `latest` - Latest stable version.
+- `x.y.z` - Particular stable version (e.g., `5.0.0`). Only the last stable version is supported.
 
 Usage
 -----
