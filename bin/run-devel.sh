@@ -6,12 +6,12 @@ set -e
 BASEDIR=$( cd `dirname $0`/.. ; pwd )
 cd "$BASEDIR"
 
-docker buildx build --platform linux/amd64,linux/arm64 -t adminneoorg/adminneo:devel --build-arg CACHE_BUST="$(date +%s)" .
+sh bin/build.sh -t devel
 
-docker stop adminneo || true
-docker rm adminneo || true
+docker stop adminneo-devel || true
+docker rm adminneo-devel || true
 
-docker run -d --name adminneo -p 8080:8080 \
+docker run -d --name adminneo-devel -p 8080:8080 \
   -e NEO_COLOR_VARIANT=green \
   -e NEO_PREFER_SELECTION=true \
   -e NEO_JSON_VALUES_DETECTION=true \
