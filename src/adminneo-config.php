@@ -12,6 +12,7 @@ $variables = [
 	"enumAsSelectThreshold" => "NEO_ENUM_AS_SELECT_THRESHOLD",
 	"recordsPerPage" => "NEO_RECORDS_PER_PAGE",
 	"versionVerification" => "NEO_VERSION_VERIFICATION",
+	"sqlAutocompletion" => "NEO_SQL_AUTOCOMPLETION",
 	"hiddenDatabases" => "NEO_HIDDEN_DATABASES",
 	"hiddenSchemas" => "NEO_HIDDEN_SCHEMAS",
 	"visibleCollations" => "NEO_VISIBLE_COLLATIONS",
