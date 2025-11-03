@@ -10,6 +10,7 @@ $variables = [
 	"jsonValuesDetection" => "NEO_JSON_VALUES_DETECTION",
 	"jsonValuesAutoFormat" => "NEO_JSON_VALUES_AUTO_FORMAT",
 	"enumAsSelectThreshold" => "NEO_ENUM_AS_SELECT_THRESHOLD",
+	"relationLinks" => "NEO_RELATION_LINKS",
 	"recordsPerPage" => "NEO_RECORDS_PER_PAGE",
 	"versionVerification" => "NEO_VERSION_VERIFICATION",
 	"sqlAutocompletion" => "NEO_SQL_AUTOCOMPLETION",
