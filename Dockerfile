@@ -23,14 +23,14 @@ RUN apk add --update --no-cache \
     # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=alpine18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline
     # Download MSSQL packages
     && architecture=${TARGETPLATFORM:6} \
-    && curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_$architecture.apk \
-    && curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_$architecture.sig \
+    && curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.apk \
+    && curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.sig \
     # Verify signature
     && curl https://packages.microsoft.com/keys/microsoft.asc | gpg --import - \
-    && gpg --verify msodbcsql18_18.5.1.1-1_$architecture.sig msodbcsql18_18.5.1.1-1_$architecture.apk \
+    && gpg --verify msodbcsql18_18.6.1.1-1_$architecture.sig msodbcsql18_18.6.1.1-1_$architecture.apk \
     # Install the packages
-    && apk add --allow-untrusted msodbcsql18_18.5.1.1-1_$architecture.apk \
-    && rm msodbcsql18_18.5.1.1-1_$architecture.apk msodbcsql18_18.5.1.1-1_$architecture.sig \
+    && apk add --allow-untrusted msodbcsql18_18.6.1.1-1_$architecture.apk \
+    && rm msodbcsql18_18.6.1.1-1_$architecture.apk msodbcsql18_18.6.1.1-1_$architecture.sig \
     # Install sqlsrv
     && pecl84 install sqlsrv \
     # Cleanup
