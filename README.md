@@ -33,7 +33,7 @@ Usage
 -----
 
 ```shell
-docker run -d --name adminneo -p 8080:8080 adminneoorg/adminneo:devel
+docker run -d --name adminneo -p 8080:8080 adminneoorg/adminneo:latest
 
 docker run -d --name adminneo -p 8080:8080 \
   -e NEO_COLOR_VARIANT=green \
@@ -45,7 +45,7 @@ docker run -d --name adminneo -p 8080:8080 \
   -e NEO_HIDDEN_SCHEMAS=__system \
   -e NEO_DEFAULT_PASSWORD_HASH= \
   -e NEO_SSL_TRUST_SERVER_CERTIFICATE=true \
-  adminneoorg/adminneo:devel
+  adminneoorg/adminneo:latest
 ```
 
 Configuration
@@ -72,8 +72,8 @@ For detailed information see [Configuration documentation](https://www.adminneo.
 | NEO_HIDDEN_SCHEMAS               | `null`    | Comma-separated list of schemas to hide from the UI. Value `__system` will be expanded to all system schemas. Access to these schemas will be not restricted.       |
 | NEO_VISIBLE_COLLATIONS           | `null`    | Comma-separated list of collations to keep in select boxes while editing databases or tables.                                                                       |
 | NEO_DEFAULT_DRIVER               | `null`    | Default driver for the login form.                                                                                                                                  |
-| NEO_DEFAULT_SERVER               | `null`    | Default server host and port for the login form.<br>`Devel version`                                                                                                 |
-| NEO_DEFAULT_DATABASE             | `null`    | Default database name for the login form.<br>`Devel version`                                                                                                        |
+| NEO_DEFAULT_SERVER               | `null`    | Default server host and port for the login form.                                                                                                                    |
+| NEO_DEFAULT_DATABASE             | `null`    | Default database name for the login form.                                                                                                                           |
 | NEO_DEFAULT_PASSWORD_HASH        | `null`    | Hash of the default password for authentication to password-less databases. Set to an empty string to allow connection without password.                            |
 | NEO_SSL_KEY                      | `null`    | MySQL: The path name to the SSL key file.                                                                                                                           |
 | NEO_SSL_CERTIFICATE              | `null`    | MySQL: The path name to the certificate file.                                                                                                                       |
@@ -87,18 +87,27 @@ Custom CSS and JavaScript
 
 It is possible to modify the appearance and functionality by creating a custom CSS or JavaScript file. AdminNeo will
 automatically include files **adminneo.css**, **adminneo-light.css**, **adminneo-dark.css** and **adminneo.js** that are
-placed in **/var/www/html** directory (next to the index.php).
+placed in **/var/www/html** directory (next to the index.php). You can find more information in the [documentaion](https://www.adminneo.org/customizations/basic).
 
-- adminneo.css - Should be compatible with automatic switching to dark mode.
-- adminneo-light.css - Will force AdminNeo to use only the light mode.
-- adminneo-dark.css - Will force the dark mode.
-
-This can be achieved by bind-mounting the files:
+Custom files can be bind-mounted to the target directory:
 ```shell
 docker run -d --name adminneo -p 8080:8080 \
   -v "/some_path/adminneo.css:/var/www/html/adminneo.css" \
   -v "/some_path/adminneo.js:/var/www/html/adminneo.js" \
-  adminneoorg/adminneo:devel
+  adminneoorg/adminneo:latest
+```
+
+Plugins
+-------
+
+The Docker image contains all the official plugins. These plugins can be enabled by modifying the **/var/www/html/adminneo-plugins.php** 
+file described in the [documentation](https://www.adminneo.org/plugins#usage).
+
+This can be done by bind-mounting the custom file:
+```shell
+docker run -d --name adminneo -p 8080:8080 \
+  -v "/some_path/adminneo-plugins.php:/var/www/html/adminneo-plugins.php" \
+  adminneoorg/adminneo:latest
 ```
 
 More information
