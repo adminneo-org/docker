@@ -1,4 +1,4 @@
-FROM trafex/php-nginx:3.10
+FROM trafex/php-nginx:latest
 
 LABEL Maintainer="Peter Knut"
 LABEL Description="AdminNeo database management"
@@ -11,14 +11,14 @@ USER root
 # Install dependencies
 RUN apk add --update --no-cache \
         git \
-        php84-pgsql \
-        php84-simplexml \
-        php84-sqlite3 \
-        php84-bz2 \
-        php84-zip \
-        php84-pecl-mongodb \
+        php85-pgsql \
+        php85-simplexml \
+        php85-sqlite3 \
+        php85-bz2 \
+        php85-zip \
+        php85-pecl-mongodb \
         # PECL dependencies
-        php84-pear php84-dev  \
+        php85-pear php85-dev  \
         gnupg autoconf g++ make unixodbc-dev \
     # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=alpine18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline
     # Download MSSQL packages
@@ -32,10 +32,10 @@ RUN apk add --update --no-cache \
     && apk add --allow-untrusted msodbcsql18_18.6.1.1-1_$architecture.apk \
     && rm msodbcsql18_18.6.1.1-1_$architecture.apk msodbcsql18_18.6.1.1-1_$architecture.sig \
     # Install sqlsrv
-    && pecl84 install sqlsrv \
+    && pecl85 install sqlsrv \
     # Cleanup
     && apk del \
-        php84-pear php84-dev \
+        php85-pear php85-dev \
         gnupg autoconf g++ make unixodbc-dev
 
 COPY src/php.ini ${PHP_INI_DIR}/conf.d/custom.ini
