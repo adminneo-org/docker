@@ -1,4 +1,4 @@
-FROM trafex/php-nginx:latest
+FROM trafex/php-nginx:3.10
 
 LABEL Maintainer="Peter Knut"
 LABEL Description="AdminNeo database management"
