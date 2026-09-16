@@ -55,8 +55,8 @@ For detailed information see [Configuration documentation](https://www.adminneo.
 
 | Environment variable             | Default   | Description                                                                                                                                                         |
 |----------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| NEO_THEME                        | `default` | Theme code. Available themes are: `default`.                                                                                                                        |
-| NEO_COLOR_VARIANT                | `blue`    | Theme color variant. Available variants are: `blue`, `green`, `red`.                                                                                                |
+| NEO_THEME                        | `default` | Theme code. Available themes are: `default`, `dune`.                                                                                                                |
+| NEO_COLOR_VARIANT                | `blue`    | Theme color variant. Available variants are: `blue`, `green`, `orange`, `purple`, `red`.                                                                            |
 | NEO_CSS_URLS                     | `null`    | Comma-separated list of custom CSS files.                                                                                                                           |
 | NEO_JS_URLS                      | `null`    | Comma-separated list of custom JavaScript files.                                                                                                                    |
 | NEO_NAVIGATION_MODE              | `simple`  | Main navigation mode that affects the left menu with the list of tables and top links: `simple`, `dual`, `hover`, `reversed`.                                       |

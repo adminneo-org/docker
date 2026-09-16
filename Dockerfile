@@ -48,7 +48,7 @@ USER nobody
 ARG GIT_TAG=main
 ARG CACHE_BUST=1
 RUN git clone --branch ${GIT_TAG} --single-branch --depth 1 https://github.com/adminneo-org/adminneo.git \
-    && php adminneo/bin/compile.php mysql,pgsql,mssql,sqlite,mongo,elastic,clickhouse,simpledb default -o index.php \
+    && php adminneo/bin/compile.php mysql,pgsql,mssql,sqlite,mongo,elastic,clickhouse,simpledb -o index.php \
     && rm -rf adminneo \
     && rm test.html
 
