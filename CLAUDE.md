@@ -26,7 +26,8 @@ sh bin/build-release.sh         # build both the versioned and the `latest` imag
 
 `build.sh` maps the image tag to the AdminNeo git ref (`GIT_TAG` build arg): `devel` → `main`, `latest` → newest
 `v*.*.*` tag without a pre-release suffix (resolved via `git ls-remote`), anything else → `v<tag>`. The `latest`
-resolution uses GNU `head --lines=1`.
+resolution uses GNU `head --lines=1`. Builds always run with `--pull` so a stale locally cached base image is never
+used.
 
 ## How the image is put together
 
@@ -34,7 +35,11 @@ resolution uses GNU `head --lines=1`.
   `/var/www/html`. The Dockerfile switches to root only to install packages, then back to `nobody` before cloning
   and compiling AdminNeo.
 - **PHP extensions**: Alpine `php85-*` packages for pgsql, sqlite3, mongodb, etc. The PHP version is pinned by the
-  package prefix (`php85`, `pecl85`), so a PHP bump means changing every such name.
+  package prefix (`php85`, `pecl85`), so a PHP bump means changing every such name. The extensions depend on
+  `php85-common` without a version, so `apk upgrade` must run before `apk add`. Otherwise a base image older than
+  the Alpine repository gets new extensions on an old PHP binary and they fail with "symbol not found". A later
+  `RUN` step fails the build when `php -m` prints a warning or a required extension is missing; keep its extension
+  list in sync with the installed packages.
 - **MS SQL**: the Microsoft ODBC driver (`msodbcsql18`) is downloaded as an Alpine package, GPG-verified and
   installed, then `sqlsrv` is built via PECL. Build tools are removed in the same `RUN` layer. The package
   architecture is derived from `TARGETPLATFORM` by stripping the leading `linux/` (`${TARGETPLATFORM:6}`), which

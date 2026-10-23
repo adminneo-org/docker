@@ -64,6 +64,7 @@ echo "cache bust: $CACHE_BUST"
 echo ""
 
 docker buildx build \
+  --pull \
   --platform linux/amd64,linux/arm64 \
   -t "adminneoorg/adminneo:$TAG" \
   --build-arg GIT_TAG="$GIT_TAG" \

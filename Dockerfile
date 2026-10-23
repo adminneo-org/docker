@@ -8,8 +8,11 @@ ARG TARGETPLATFORM
 # Temporary switch to root
 USER root
 
-# Install dependencies
-RUN apk add --update --no-cache \
+# Upgrade base packages first. PHP extensions depend on php85-common without a version, so installing them
+# on top of an outdated base image would mix a new extension with an old PHP binary.
+RUN apk upgrade --no-cache \
+    # Install dependencies
+    && apk add --no-cache \
         git \
         php85-pgsql \
         php85-simplexml \
@@ -40,6 +43,12 @@ RUN apk add --update --no-cache \
 
 COPY src/php.ini ${PHP_INI_DIR}/conf.d/custom.ini
 RUN sed -i '/keepalive_timeout/a\    client_max_body_size 1G;' /etc/nginx/nginx.conf
+
+# Fail the build if any PHP extension cannot be loaded
+RUN if php -m 2>&1 | grep -iE 'warning|error'; then exit 1; fi \
+    && for ext in pgsql sqlite3 mongodb sqlsrv bz2 zip simplexml; do \
+        php -m | grep -qix "$ext" || { echo "Missing PHP extension: $ext"; exit 1; }; \
+    done
 
 # Switch back to non-root user
 USER nobody
